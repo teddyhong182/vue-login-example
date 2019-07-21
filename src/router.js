@@ -6,6 +6,12 @@ import MyPage from "./views/MyPage.vue";
 
 Vue.use(Router);
 
+const requireAuth = () => (from, to, next) => {
+  const isAuthenticated = false
+  if (isAuthenticated) return next()
+  next('/login?returnPath=mypage')
+}
+
 export default new Router({
   mode: "history",
   base: process.env.BASE_URL,
