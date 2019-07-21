@@ -17,8 +17,10 @@ export default {
     }
   },
   created() {
-    axios.get('http://localhost:8088/home')
-      .then(result => this.greeting = result.data.greeting)
+    // axios.get('http://localhost:8088/home')
+    //   .then(result => this.greeting = result.data.greeting)
+    this.greeting = 'vue-login-example'
+    
   }
 };
 </script>

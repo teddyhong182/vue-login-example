@@ -15,6 +15,8 @@ export default new Vuex.Store({
   },
   mutations: {
     LOGIN (state, {accessToken}) {
+
+      // 스토어에 엑세스 토큰 저장
       state.accessToken = accessToken
     },
     LOGOUT (state) {
@@ -24,7 +26,10 @@ export default new Vuex.Store({
   actions: {    
     LOGIN ({commit}, {email, password}) {
       return axios.post(`${resourceHost}/login`, {email, password})
-        .then(({data}) => commit('LOGIN', data))
+        .then(({data}) => {
+          // LOGIN 변이 실행
+          commit('LOGIN', data)
+        })
     },
     LOGOUT ({commit}) {
       commit('LOGOUT')

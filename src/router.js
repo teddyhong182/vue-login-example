@@ -7,8 +7,14 @@ import MyPage from "./views/MyPage.vue";
 Vue.use(Router);
 
 const requireAuth = () => (from, to, next) => {
+
+  console.log("call requireAuth.")
+
   const isAuthenticated = false
-  if (isAuthenticated) return next()
+  if (isAuthenticated) {
+    return next()
+  }
+  
   next('/login?returnPath=mypage')
 }
 
@@ -39,7 +45,7 @@ export default new Router({
       path: "/mypage",
       name: "MyPage",
       component: MyPage,
-      beforeEnter: requireAuth
+      beforeEnter: requireAuth()
     }
   ]
 });
